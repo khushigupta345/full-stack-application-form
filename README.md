@@ -59,19 +59,16 @@ full-stack-application-form/
 │   └── review-submit/
 
 
----
-
 ## Application Flow
 
-1. The user signs up using their name, email, and password.  
-2. After signup, a JWT token is issued by the backend and saved in the browser's localStorage.  
-3. The user fills out the form section by section. Each section is auto-saved as a draft.  
-4. On submission, the complete form data along with photo and chart files is sent to the backend.  
-5. Once the form is submitted, the user is redirected to a review page.  
-6. The review page loads submitted data through a secure API call.  
-7. Each section on the review page has an edit option for one-time corrections.  
-8. After the update is completed, the form is locked and cannot be edited again.  
-
+- The user signs up using their name, email, and password.  
+- After signup, a JWT token is issued by the backend and saved in the browser's localStorage.  
+- The user fills out the form section by section. Each section is auto-saved as a draft.  
+- On submission, the complete form data along with photo and chart files is sent to the backend.  
+- Once the form is submitted, the user is redirected to a review page.  
+- The review page loads submitted data through a secure API call.  
+- Each section on the review page has an edit option for one-time corrections.  
+- After the update is completed, the form is locked and cannot be edited again.
 
 ## Authentication Logic
 
