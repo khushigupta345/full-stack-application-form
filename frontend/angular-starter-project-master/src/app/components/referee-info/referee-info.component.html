@@ -1,0 +1,55 @@
+<div class="form-container">
+  <form [formGroup]="refereeForm" (ngSubmit)="next()">
+    <h2 class="form-title">Referee Details</h2>
+
+    <div formArrayName="referees">
+      <div
+        *ngFor="let ref of referees.controls; let i = index"
+        [formGroupName]="i"
+        class="edu-group"
+      >
+        <div class="edu-header">
+          <h3>Referee {{ i + 1 }}</h3>
+          <button type="button" class="remove-btn" (click)="removeReferee(i)" *ngIf="referees.length > 1">
+            Remove
+          </button>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Name</label>
+            <input formControlName="name" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Designation</label>
+            <input formControlName="designation" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Company</label>
+            <input formControlName="company" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Contact Details</label>
+            <input formControlName="contact" type="text" />
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" (click)="addReferee()" [disabled]="referees.length >= 2">
+        Add Referee
+      </button>
+    </div>
+
+    <div class="navigation-buttons">
+      <button type="button" class="nav-btn" (click)="previous()">Previous</button>
+      <button type="submit" class="nav-btn" [disabled]="!refereeForm.valid">Next</button>
+    </div>
+  </form>
+</div>

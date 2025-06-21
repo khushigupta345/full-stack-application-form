@@ -1,0 +1,90 @@
+<div class="form-container">
+  <form [formGroup]="employmentForm" (ngSubmit)="next()">
+    <h2 class="form-title">Employment History</h2>
+
+    <div formArrayName="employmentHistories">
+      <div *ngFor="let job of employmentHistories.controls; let i = index; trackBy: trackByIndex"[formGroupName]="i" class="edu-group">
+      
+        <div class="edu-header">
+          <h3>Job {{ i + 1 }}</h3>
+          <button type="button" class="remove-btn" (click)="removeEmployment(i)" *ngIf="employmentHistories.length > 1">
+            Remove
+          </button>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Company Name</label>
+            <input formControlName="companyName" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Designation</label>
+            <input formControlName="designation" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Location</label>
+            <input formControlName="location" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Employment From</label>
+            <input formControlName="employmentFrom" type="date" />
+          </div>
+
+          <div class="form-field">
+            <label>Employment To</label>
+            <input formControlName="employmentTo" type="date" />
+          </div>
+
+          <div class="form-field">
+            <label>HR Name</label>
+            <input formControlName="hrName" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>HR Email</label>
+            <input formControlName="hrEmail" type="email" />
+          </div>
+
+          <div class="form-field">
+            <label>HR Contact</label>
+            <input formControlName="hrContact" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Reporting Manager</label>
+            <input formControlName="reportingManager" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Manager Email</label>
+            <input formControlName="managerEmail" type="email" />
+          </div>
+
+          <div class="form-field">
+            <label>CTC</label>
+            <input formControlName="ctc" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Reason for Leaving</label>
+            <input formControlName="reasonForLeaving" type="text" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" (click)="addEmployment()" [disabled]="employmentHistories.length >= 3">
+        + Add Employment
+      </button>
+    </div>
+
+    <div class="navigation-buttons">
+      <button type="button" class="nav-btn" (click)="previous()">Previous</button>
+      <button type="submit" class="nav-btn" [disabled]="!employmentForm.valid">Next</button>
+    </div>
+  </form>
+</div>

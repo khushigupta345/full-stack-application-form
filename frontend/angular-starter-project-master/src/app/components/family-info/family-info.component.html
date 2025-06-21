@@ -1,0 +1,40 @@
+<div class="form-container">
+  <form [formGroup]="familyForm" (ngSubmit)="next()">
+    <h1 style="font-weight: bold; " class="form-title">Family Members</h1>
+
+    <div formArrayName="familyMembers">
+      <div *ngFor="let member of familyMembers.controls; let i = index" [formGroupName]="i" class="edu-group">
+        <div class="edu-header">
+          <h3>Member {{ i + 1 }}</h3>
+          <button type="button" class="remove-btn" (click)="removeMember(i)" *ngIf="familyMembers.length > 1">
+            Remove
+          </button>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Name</label>
+            <input formControlName="name" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Relationship</label>
+            <input formControlName="relationship" type="text" />
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" (click)="addMember()" [disabled]="familyMembers.length >= 6">
+        + Add Member
+      </button>
+    </div>
+
+    <div class="navigation-buttons">
+      <button type="button" class="nav-btn" (click)="previous()">Previous</button>
+      <button type="submit" class="nav-btn" [disabled]="!familyForm.valid">Next</button>
+    </div>
+  </form>
+</div>

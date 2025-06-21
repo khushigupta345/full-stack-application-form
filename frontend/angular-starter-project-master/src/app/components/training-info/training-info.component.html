@@ -1,0 +1,59 @@
+<div class="form-container">
+  <form [formGroup]="trainingForm" (ngSubmit)="next()">
+    <h2 class="form-title">Trainings & Seminars</h2>
+
+    <div formArrayName="trainings">
+      <div
+        *ngFor="let training of trainings.controls; let i = index"
+        [formGroupName]="i"
+        class="edu-group">
+                <div class="edu-header">
+          <h3>Traning {{ i + 1 }}</h3>
+          <button type="button" class="remove-btn" (click)="removeTraining(i)" *ngIf="trainings.length > 1">
+            Remove
+          </button>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Seminar Name</label>
+            <input formControlName="seminarName" type="text" />
+
+          </div>
+
+          <div class="form-field">
+            <label>Conducted By</label>
+            <input formControlName="conductedBy" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>From Date</label>
+            <input formControlName="fromDate" type="date" />
+          </div>
+          
+          <div class="form-field">
+            <label> Institution</label>
+            <input formControlName="institution" type="text" />
+          </div>
+         
+
+          <div class="form-field">
+            <label>To Date</label>
+            <input formControlName="toDate" type="date" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" (click)="addTraining()" [disabled]="trainings.length >= 5">
+        Add Training
+      </button>
+    </div>
+
+    <div class="navigation-buttons">
+      <button type="button" class="nav-btn" (click)="previous()">Previous</button>
+      <button type="submit" class="nav-btn" [disabled]="!trainingForm.valid">Next</button>
+    </div>
+  </form>
+</div>

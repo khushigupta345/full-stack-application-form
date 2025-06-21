@@ -1,0 +1,123 @@
+<div class="l">
+<div class="form-wrapper">
+  <h2 class="form-title">Personal Information</h2>
+  <form [formGroup]="personalForm" (ngSubmit)="next()">
+    <div class="form-grid">
+      <div class="form-field">
+        <label>Full Name</label>
+        <input formControlName="fullName" type="text" />
+      </div>
+
+      <div class="form-field">
+        <label>Phone</label>
+        <input formControlName="phone" type="text" />
+      </div>
+
+      <div class="form-field">
+        <label>Father's Name</label>
+        <input formControlName="fatherName" type="text" />
+      </div>
+
+      <div class="form-field">
+        <label>Email</label>
+        <input formControlName="email" type="email" />
+        <div class="error" *ngIf="personalForm.get('email')?.invalid && personalForm.get('email')?.touched">
+          Please enter a valid email
+        </div>
+      </div>
+
+
+     
+         
+      <div class="form-field">
+        <label>Gender</label>
+        <select formControlName="gender">
+          <option value="">Select</option>
+          <option value="Female">Female</option>
+          <option value="Male">Male</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>Marital Status</label>
+        <select formControlName="maritalStatus">
+          <option value="">Select</option>
+          <option value="Single">Single</option>
+          <option value="Married">Married</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>Nationality</label>
+        <input formControlName="nationality" type="text" />
+      </div>
+
+      <div class="form-field">
+        <label>Date of Birth</label>
+        <input formControlName="dob" type="date" />
+      </div>
+
+
+
+      <div class="form-field">
+        <label>Place of Birth</label>
+        <input formControlName="placeOfBirth" type="text" />
+      </div>
+
+      
+      <div class="form-field">
+        <label>Do you have a Visa?</label>
+        <select formControlName="hasVisa">
+          <option value="">Select</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Attended Interview In 6 Month?</label>
+        <select formControlName="attendedInterviewIn6Months">
+          <option value="">Select</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+  <label>PANCard</label>
+  <input formControlName="panCard" type="text" />
+</div>
+ <div class="form-field">
+        <label>Willing to Travel/USA Or ShriLanka?</label>
+        <select formControlName="willingToTravel">
+          <option value="">Select</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      
+  <div class="form-field full">
+  <label>Passport Size Photo</label>
+  <input type="file" (change)="onPhotoChange($event)" />
+  
+
+  <div *ngIf="photoPreviewUrl" class="image-preview">
+    <img [src]="photoPreviewUrl" alt="Photo Preview" width="120" height="120" />
+  </div>
+</div>
+
+<div class="form-field full">
+  <label>Organization Chart</label>
+  <input type="file" (change)="onChartChange($event)" />
+  
+
+  <div *ngIf="chartPreviewUrl" class="image-preview">
+    <img [src]="chartPreviewUrl" alt="Chart Preview" width="120" height="120" />
+  </div>
+</div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" [disabled]="!personalForm.valid">Next</button>
+    </div>
+  </form>
+</div>
+</div>

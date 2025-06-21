@@ -1,0 +1,36 @@
+.signup-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #007bff;
+  border: none;
+  padding: 0.6rem 1rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  margin-top: 1rem;
+}

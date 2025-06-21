@@ -1,0 +1,63 @@
+<div class="form-container">
+  <form [formGroup]="qualificationForm" (ngSubmit)="next()">
+    <h2 class="form-title">Additional Qualifications</h2>
+
+    <div formArrayName="additionalQualifications">
+      <div
+        *ngFor="let qual of additionalQualifications.controls; let i = index"
+        [formGroupName]="i"
+        class="edu-group"
+      >
+        <div class="edu-header">
+          <h3>Qualification {{ i + 1 }}</h3>
+          
+    
+          <button type="button" class="remove-btn" (click)="removeQualification(i)" *ngIf="additionalQualifications.length > 1">
+            Remove
+          </button>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Program</label>
+            <input formControlName="program" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Institute</label>
+            <input formControlName="institute" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>From Date</label>
+            <input formControlName="fromDate" type="date" />
+          </div>
+
+          <div class="form-field">
+            <label>To Date</label>
+            <input formControlName="toDate" type="date" />
+          </div>
+
+          <div class="form-field">
+            <label>Percentage</label>
+            <input formControlName="percentage" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Division</label>
+            <input formControlName="division" type="text" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" (click)="addQualification()">Add Qualification</button>
+    </div>
+
+    <div class="navigation-buttons">
+      <button type="button" class="nav-btn" (click)="previous()">Previous</button>
+      <button type="submit" class="nav-btn" [disabled]="!qualificationForm.valid">Next</button>
+    </div>
+  </form>
+</div>

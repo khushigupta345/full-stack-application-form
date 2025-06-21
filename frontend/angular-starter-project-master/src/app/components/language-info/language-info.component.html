@@ -1,0 +1,43 @@
+<div class="form-container">
+  <form [formGroup]="languageForm" (ngSubmit)="next()">
+    <h2 class="form-title">Language Proficiency</h2>
+
+    <div formArrayName="languageProficiencies">
+      <div *ngFor="let lang of languageProficiencies.controls; let i = index" [formGroupName]="i" class="language-group">
+        <div class="group-header">
+          <h3>Language {{ i + 1 }}</h3>
+          <button type="button" (click)="removeLanguage(i)" *ngIf="languageProficiencies.length > 1">Remove</button>
+        </div>
+
+        <div class="form-field">
+          <label>Language</label>
+          <input formControlName="language" type="text" />
+          <div class="error" *ngIf="lang.get('language')?.invalid && lang.get('language')?.touched">
+            Language name is required.
+          </div>
+        </div>
+
+        <div class="form-field checkbox-field">
+          <label>Skills</label>
+          <div class="checkboxes">
+            <label><input type="checkbox" formControlName="read" /> Read</label>
+            <label><input type="checkbox" formControlName="write" /> Write</label>
+            <label><input type="checkbox" formControlName="speak" /> Speak</label>
+          </div>
+          <!-- <div class="error" *ngIf="lang.errors?.noSkillSelected && lang.touched">
+            Please select at least one skill (Read, Write, or Speak).
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button type="button" (click)="addLanguage()" [disabled]="languageProficiencies.length >= 4">+ Add Language</button>
+    </div>
+
+    <div class="navigation-buttons">
+      <button type="button" (click)="previous()">Previous</button>
+      <button type="submit" [disabled]="!languageForm.valid">Next</button>
+    </div>
+  </form>
+</div>

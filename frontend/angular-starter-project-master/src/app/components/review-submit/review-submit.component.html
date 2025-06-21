@@ -1,0 +1,228 @@
+ 
+<div class="review-section" *ngIf="allData">
+  <h3>Personal Information <button [hidden]="!editable" (click)="editSection('personal-info')">Edit</button></h3>
+  <table>
+    <tr><th>Full Name</th><td>{{ allData.fullName }}</td></tr>
+    <tr><th>Father's Name</th><td>{{ allData.fatherName }}</td></tr>
+    <tr><th>Email</th><td>{{ allData.email }}</td></tr>
+    <tr><th>Phone</th><td>{{ allData.phone }}</td></tr>
+    <tr><th>Gender</th><td>{{ allData.gender }}</td></tr>
+    <tr><th>Marital Status</th><td>{{ allData.maritalStatus }}</td></tr>
+    <tr><th>DOB</th><td>{{ allData.dob }}</td></tr>
+    <tr><th>PAN Card</th><td>{{ allData.panCard }}</td></tr>
+    <tr><th>Nationality</th><td>{{ allData.nationality }}</td></tr>
+    <tr><th>Place of Birth</th><td>{{ allData.placeOfBirth }}</td></tr>
+    <tr><th>Attended Interview in 6 Months</th><td>{{ allData.attendedInterviewIn6Months }}</td></tr>
+    <tr><th>Has Visa</th><td>{{ allData.hasVisa }}</td></tr>
+    <tr><th>Willing to Travel</th><td>{{ allData.willingToTravel }}</td></tr>
+  </table>
+</div>
+
+<div class="review-section" *ngIf="allData">
+  <h3>Address Information <button *ngIf="editable" (click)="editSection('address-info')">Edit</button></h3>
+  <h4>Present Address</h4>
+   <table>
+  <tr><th>House No</th><td>{{ allData.presentAddress.houseNo }}</td></tr>
+  <tr><th>City</th><td>{{ allData.presentAddress.city }}</td></tr>
+    <tr><th>State</th><td>{{ allData.presentAddress.state }}</td></tr>
+    <tr><th>Pin Code</th><td>{{ allData.presentAddress.pinCode }}</td></tr>
+    <tr><th>Country</th><td>{{ allData.presentAddress.country }}</td></tr>
+  </table>
+
+  <h4>Permanent Address</h4>
+  <table>
+    <tr><th>House No</th><td>{{ allData.permanentAddress.houseNo }}</td></tr>
+    <tr><th>City</th><td>{{ allData.permanentAddress.city }}</td></tr>
+    <tr><th>State</th><td>{{ allData.permanentAddress.state }}</td></tr>
+  
+    <tr><th>Pin Code</th><td>{{ allData.permanentAddress.pinCode }}</td></tr>
+    <tr><th>Country</th><td>{{ allData.permanentAddress.country }}</td></tr>
+  </table>
+</div>
+
+<div class="review-section" *ngIf="allData?.educationList?.length">
+  <h3>Education</h3>
+  <table>
+    <thead>
+      <tr><th>Degree</th><th>Course</th><th>College</th><th>University</th><th>From</th><th>To</th><th>%</th></tr>
+    </thead>
+    <tr *ngFor="let e of allData.educationList">
+      <td>{{ e.degree }}</td>
+      <td>{{ e.course }}</td>
+      <td>{{ e.collegeName }}</td>
+      <td>{{ e.universityName }}</td>
+      <td>{{ e.fromYear }}</td>
+      <td>{{ e.toYear }}</td>
+      <td>{{ e.percentage }}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="review-section" *ngIf="allData?.familyMembers?.length">
+  <h3>Family Members</h3>
+  <table>
+    <thead><tr><th>Name</th><th>Relationship </th></tr></thead>
+    
+    <tr *ngFor="let f of allData.familyMembers">
+      <td>{{ f.name }}</td>
+      <td>{{ f.relationship }}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="review-section" *ngIf="allData?.passportDetails">
+  <h3>Passport Details</h3>
+  <table>
+  <!--  PASSPORT -->
+    <tr><th>Passport No</th><td>{{ allData.passportDetails.passportNumber }}</td></tr>
+    <tr><th>Place of Issue</th><td>{{ allData.passportDetails.placeOfIssue }}</td></tr>
+    <tr><th>Date of Issue</th><td>{{ allData.passportDetails.dateOfIssue }}</td></tr>
+    <tr><th>Date of Expiry</th><td>{{ allData.passportDetails.dateOfExpiry }}</td></tr>
+  </table>
+</div>
+
+<div class="review-section" *ngIf="allData?.languageProficiencies?.length">
+  <h3>Languages Known</h3>
+  <table>
+  
+    <thead><tr><th>Language</th><th>Read</th><th>Write</th><th>Speak</th></tr></thead>
+    <tr *ngFor="let l of allData.languageProficiencies">
+      <td>{{ l.language }}</td>
+      <td>{{ l.read ? 'Yes' : 'No' }}</td>
+      <td>{{ l.write ? 'Yes' : 'No' }}</td>
+      <td>{{ l.speak ? 'Yes' : 'No' }}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="review-section" *ngIf="allData?.trainings?.length">
+  <h3>Trainings / Seminars</h3>
+  <table>
+    <thead><tr><th>Seminar</th><th>Institution</th><th>By</th><th>From</th><th>To</th></tr></thead>
+    <tr *ngFor="let t of allData.trainings">
+      <td>{{ t.seminarName }}</td>
+      <td>{{ t.institution }}</td>
+      <td>{{ t.conductedBy }}</td>
+      <td>{{ t.fromDate }}</td>
+      <td>{{ t.toDate }}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="review-section" *ngIf="allData?.achievements?.length">
+  <h3>Achievements</h3>
+  <table>
+    <thead><tr><th>Year</th><th>Description </th></tr></thead> 
+    <tr *ngFor="let a of allData.achievements">
+      <td>{{ a.year }}</td>
+      <td>{{ a.description }}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="review-section" *ngIf="allData?.projects?.length">
+  <h3>Projects</h3>
+  <table>
+   <thead><tr><th>Title</th><th>Client</th><th>Company</th><th>Skills</th><th>Team</th><th>Role</th></tr></thead>
+   
+    <tr *ngFor="let p of allData.projects">
+      
+      <td>{{ p.title }}</td>
+      <td>{{ p.client }}</td>
+      <td>{{ p.company }}</td>
+      <td>{{ p.skills }}</td>
+      <td>{{ p.teamSize }}</td>
+      <td>{{ p.role }}</td>
+    </tr>
+  </table>
+</div>
+
+<!--  REFEREES -->
+<div class="review-section" *ngIf="allData?.employmentHistories?.length">
+ <h3>Prevous Employment</h3>
+  <table>
+    <thead><tr><th>Company</th><th>Designation</th><th>Location</th><th>From</th><th>To</th><th>Reason</th></tr></thead>
+    <tr *ngFor="let emp of allData.employmentHistories">
+      <td>{{ emp.companyName }}</td>
+      <td>{{ emp.designation }}</td>
+      <td>{{ emp.location }}</td>
+      <td>{{ emp.employmentFrom }}</td>
+      <td>{{ emp.employmentTo }}</td>
+      <td>{{ emp.reasonForLeaving }}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="review-section" *ngIf="allData?.referees?.length">
+  <h3>Referees</h3>
+  <table>
+    <thead><tr><th>Name</th><th>Designation</th><th>Company</th><th>Contact</th></tr></thead>
+    
+    <tr *ngFor="let r of allData.referees">
+      <td>{{ r.name }}</td>
+      <td>{{ r.designation }}</td>
+      <td>{{ r.company }}</td>
+      <td>{{ r.contact }}</td>
+    </tr>
+  </table>
+</div>
+
+<!--  PERSONAL ASSESSMENT --><div class="review-section" *ngIf="allData?.personalAssessment">
+  <h3>Personal Assessment</h3>
+  <table>
+    <tr><th>Strength</th><td>{{ allData.personalAssessment.strength }}</td></tr>
+    <tr><th>Weakness</th><td>{{ allData.personalAssessment.weaknesse }}</td></tr>
+    <tr><th>Short Term Goal</th><td>{{ allData.personalAssessment.shortTermGoal }}</td></tr>
+    <tr><th>Long Term Goal</th><td>{{ allData.personalAssessment.longTermGoal }}</td></tr>
+    <tr><th>Hobbies</th><td>{{ allData.personalAssessment.hobbie }}</td></tr>
+  </table>
+</div>
+
+<!--  DECLARATION -->
+<div class="review-section" *ngIf="allData?.declarationSignedBy">
+  <h3>Declaration</h3>
+  <table>
+    <tr><th>Signed By</th><td>{{ allData.declarationSignedBy }}</td></tr>
+    <tr><th>Date</th><td>{{ allData.declarationDate }}</td></tr>
+  </table>
+</div>
+
+<!-- GAP -->
+<div class="review-section" *ngIf="allData?.gapExplanations?.length">
+  <h3>Gap Explanation</h3>
+  <table>
+    <thead><tr><th>From</th><th>To</th><th>Reason</th></tr></thead>
+    <tr *ngFor="let gap of allData.gapExplanations">
+      <td>{{ gap.fromDate }}</td>
+      <td>{{ gap.toDate }}</td>
+      <td>{{ gap.reason }}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="review-section" *ngIf="allData?.additionalQualifications?.length">
+  <h3>Additional Qualifications</h3>
+  <table>
+    <thead><tr><th>Program</th><th>Institute</th><th>From</th><th>To</th><th>%</th><th>Division</th></tr></thead>
+    <tr *ngFor="let add of allData.additionalQualifications">
+      <td>{{ add.program }}</td>
+      <td>{{ add.institute }}</td>
+      <td>{{ add.fromDate }}</td>
+      <td>{{ add.toDate }}</td>
+      <td>{{ add.percentage }}</td>
+      <td>{{ add.division }}</td>
+    </tr>
+  </table>
+</div>
+
+
+<div *ngIf="editable" class="submit-section">
+  <button (click)="finalUpdate()" [disabled]="submitting">
+    {{ submitting ? 'Updating...' : 'Final Update & Lock' }}
+  </button>
+
+</div>
+
+<div *ngIf="updateDone" class="submitted-msg">
+  <p> You have successfully updated the form. No more changes are allowed.</p>
+</div>

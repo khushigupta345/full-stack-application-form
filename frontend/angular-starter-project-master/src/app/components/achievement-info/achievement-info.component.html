@@ -1,0 +1,34 @@
+<div class="form-container">
+  <form [formGroup]="achievementForm" (ngSubmit)="next()">
+    <h2>Achievements</h2>
+
+    <div formArrayName="achievements">
+      <div *ngFor="let ach of achievements.controls; let i = index" [formGroupName]="i" class="achievement-group">
+        <h3>Achievement {{ i + 1 }}</h3>
+
+        <div class="form-field">
+          <label>Description</label>
+          <input formControlName="description" type="text" />
+        </div>
+
+        <div class="form-field">
+          <label>Year</label>
+          <input formControlName="year" type="text" />
+        </div>
+
+        <div class="actions">
+          <button type="button" (click)="removeAchievement(i)" [disabled]="achievements.length <= 1">Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" (click)="addAchievement()">Add Achievement</button>
+    </div>
+
+    <div class="actions">
+      <button type="button" (click)="previous()">Previous</button>
+      <button type="submit" [disabled]="!achievementForm.valid">Next</button>
+    </div>
+  </form>
+</div>

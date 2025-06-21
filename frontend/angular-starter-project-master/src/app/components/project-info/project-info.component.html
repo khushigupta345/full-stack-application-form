@@ -1,0 +1,60 @@
+<div class="form-container">
+  <form [formGroup]="projectForm" (ngSubmit)="next()">
+    <h2 class="form-title">Project Information</h2>
+
+    <div formArrayName="projects">
+      <div *ngFor="let proj of projects.controls; let i = index" [formGroupName]="i" class="edu-group">
+        <div class="edu-header">
+          <h3>Project {{ i + 1 }}</h3>
+        
+          <button type="button" class="remove-btn" (click)="removeProject(i)" *ngIf="projects.length > 1">
+            Remove
+          </button>
+        </div>
+       
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Project Title</label>
+            <input formControlName="title" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Company/Self</label>
+            <input formControlName="company" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Client</label>
+            <input formControlName="client" type="text" />
+          </div>
+
+
+          <div class="form-field">
+            <label>Technologies / Skills Used</label>
+            <input formControlName="skills" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label>Team Size</label>
+            <input formControlName="teamSize" type="number" />
+          </div>
+
+          <div class="form-field">
+            <label>Role</label>
+            <input formControlName="role" type="text" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" (click)="addProject()" [disabled]="projects.length >= 3">Add Project</button>
+    </div>
+
+    <div class="navigation-buttons">
+      <button type="button" class="nav-btn" (click)="previous()">Previous</button>
+      <button type="submit" class="nav-btn" [disabled]="!projectForm.valid">Next</button>
+    </div>
+  </form>
+</div>

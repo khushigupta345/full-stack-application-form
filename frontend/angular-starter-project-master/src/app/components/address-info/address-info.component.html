@@ -1,0 +1,67 @@
+<div class="form-wrapper">
+  <h2 class="form-title">Address Information</h2>
+  <form [formGroup]="addressForm" (ngSubmit)="next()">
+    <div class="form-grid">
+  
+      <fieldset formGroupName="presentAddress" class="address-block">
+        <legend>Present Address</legend>
+        <div class="form-field floating">
+          <label>House No</label>
+          <input formControlName="houseNo" type="text" />
+        </div>
+        <div class="form-field floating">
+          <label>City</label>
+          <input formControlName="city" type="text" />
+        </div>
+        <div class="form-field floating">
+          <label>State</label>
+          <input formControlName="state" type="text" />
+        </div>
+        <div class="form-field floating">
+          <label>Pin Code</label>
+          <input formControlName="pinCode" type="text" />
+        </div>
+        <div class="form-field floating">
+          <label>Country</label>
+          <input formControlName="country" type="text" />
+        </div>
+        <div class="form-field full">
+          <label>
+            <input type="checkbox" (change)="copyAddress($event)" />
+            Permanent address same as present address
+          </label>
+        </div>
+      </fieldset>
+
+      <!--  Permanent Address -->
+      <fieldset formGroupName="permanentAddress" class="address-block">
+        <legend>Permanent Address</legend>
+        <div class="form-field floating">
+          <label>House No</label>
+          <input formControlName="houseNo" type="text" />
+        </div>
+        <div class="form-field floating">
+          <label>City</label>
+          <input formControlName="city" type="text" />
+        </div>
+        <div class="form-field floating">
+          <label>State</label>
+          <input formControlName="state" type="text" />
+        </div>
+        <div class="form-field floating">
+          <label>Pin Code</label>
+          <input formControlName="pinCode" type="text" />
+        </div>
+        <div class="form-field floating">
+          <label>Country</label>
+          <input formControlName="country" type="text" />
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="actions" style="display: flex;justify-content: space-around;">
+      <button type="button" (click)="previous()">Previous</button>
+      <button type="submit" [disabled]="!addressForm.valid">Next</button>
+    </div>
+  </form>
+</div>

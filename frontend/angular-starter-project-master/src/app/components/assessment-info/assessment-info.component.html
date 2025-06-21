@@ -1,0 +1,37 @@
+<div class="form-container">
+  <form [formGroup]="assessmentForm" (ngSubmit)="next()">
+    <h2 class="form-title">Personal Assessment</h2>
+
+    <div class="form-grid">
+      <div class="form-field full-width">
+        <label>Strengths</label>
+        <textarea formControlName="strength" rows="3"></textarea>
+      </div>
+
+      <div class="form-field full-width">
+        <label>Weaknesses</label>
+        <textarea formControlName="weaknesse" rows="3"></textarea>
+      </div>
+
+      <div class="form-field full-width">
+        <label>Short Term Goals</label>
+        <textarea formControlName="shortTermGoal" rows="3"></textarea>
+      </div>
+
+      <div class="form-field full-width">
+        <label>Long Term Goals</label>
+        <textarea formControlName="longTermGoal" rows="3"></textarea>
+      </div>
+
+      <div class="form-field full-width">
+        <label>Hobbies</label>
+        <textarea formControlName="hobbie" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="navigation-buttons">
+      <button type="button" class="nav-btn" (click)="previous()">Previous</button>
+      <button type="submit" class="nav-btn" [disabled]="!assessmentForm.valid">Next</button>
+    </div>
+  </form>
+</div>

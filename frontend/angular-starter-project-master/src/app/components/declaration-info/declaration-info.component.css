@@ -1,0 +1,82 @@
+.form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px lightgray;
+}
+
+h1 {
+  text-align: center;
+font-weight: bold;
+font-style: 23px;
+  margin-bottom: 20px;
+}
+
+.paragraph {
+  background-color: lavender;
+  border-left: 4px solid cornflowerblue;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.paragraph p {
+  font-weight: bold;
+  line-height: 1.7;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 12px;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+
+
+ .form-field input {
+  width: 30%;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 6px;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+}
+
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.actions button {
+  padding: 10px 20px;
+  font-size: 15px;
+  background-color: steelblue;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background-color: royalblue;
+}
+
+
+.form-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: dimgray;
+}
+
+
+
+
+
+

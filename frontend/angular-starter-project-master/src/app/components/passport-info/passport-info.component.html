@@ -1,0 +1,33 @@
+<div class="form-container">
+  <form [formGroup]="passportForm" (ngSubmit)="next()">
+    <h2 class="form-title">Passport Information</h2>
+
+    <div class="form-grid">
+      <div class="form-field">
+        <label>Passport Number</label>
+        <input formControlName="passportNumber" type="text" />
+      </div>
+
+      <div class="form-field">
+        <label>Date of Issue</label>
+        <input formControlName="dateOfIssue" type="date" />
+      </div>
+
+      <div class="form-field">
+        <label>Date of Expiry</label>
+        <input formControlName="dateOfExpiry" type="date" />
+      </div>
+
+      <div class="form-field">
+        <label>Place of Issue</label>
+        <input formControlName="placeOfIssue" type="text" />
+      </div>
+
+    </div>
+
+    <div class="navigation-buttons">
+      <button type="button" class="nav-btn" (click)="previous()">Previous</button>
+      <button type="submit" class="nav-btn" [disabled]="!passportForm.valid">Next</button>
+    </div>
+  </form>
+</div>
