@@ -44,20 +44,20 @@ and file upload capabilities.
 ## Project Structure
 
 full-stack-application-form/
-├── backend/
-│   ├── controller/
-│   ├── dto/
-│   ├── entity/
-│   ├── service/
-│   ├── repository/
-│   └── config/
+│
+├── backend/                  ← Spring Boot backend code
+│   ├── controller/           ← API controllers
+│   ├── dto/                  ← Data Transfer Objects
+│   ├── entity/               ← JPA entities
+│   ├── service/              ← Business logic
+│   ├── repository/           ← Spring Data JPA repositories
+│   └── config/               ← JWT security configuration
 
-├── frontend/
-│   ├── components/
-│   ├── services/
-│   ├── guards/
-│   └── review-submit/
-
+├── frontend/                 ← Angular frontend code
+    ├── components/           ← Step-wise form components
+    ├── services/             ← AuthService, FormService
+    ├── guards/               ← Route protection (AuthGuard)
+    └── review-submit/        ← Final review and submit page
 
 ## Application Flow
 
