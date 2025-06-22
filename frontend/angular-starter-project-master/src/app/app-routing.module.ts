@@ -18,27 +18,28 @@ import { GapInfoComponent } from './components/gap-info/gap-info.component';
 import { DeclarationInfoComponent } from './components/declaration-info/declaration-info.component';
 import { ReviewSubmitComponent } from './components/review-submit/review-submit.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full' },
      { path: 'signup', component: SignupComponent },
  
-  { path: 'personal-info', component: PersonalInfoComponent },
-  { path: 'address-info', component: AddressInfoComponent },
-  { path: 'education-info', component: EducationInfoComponent },
-  { path: 'family-info', component: FamilyInfoComponent },
-  { path: 'passport-info', component: PassportInfoComponent },
-  { path: 'language-info', component: LanguageInfoComponent },
-  { path: 'training-info', component: TrainingInfoComponent },
-  { path: 'achievement-info', component: AchievementInfoComponent },
-  { path: 'project-info', component: ProjectInfoComponent },
-  { path: 'employment-info', component: EmploymentInfoComponent },
-  { path: 'referee-info', component: RefereeInfoComponent },
-  { path: 'assessment-info', component: AssessmentInfoComponent },
-  { path: 'qualification-info', component: QualificationInfoComponent },
-  { path: 'gap-info', component: GapInfoComponent },
-  { path: 'declaration-info', component: DeclarationInfoComponent },
-  { path: 'review-submit', component: ReviewSubmitComponent },
+  { path: 'personal-info', component: PersonalInfoComponent,canActivate: [AuthGuard] },
+  { path: 'address-info', component: AddressInfoComponent,canActivate: [AuthGuard]  },
+  { path: 'education-info', component: EducationInfoComponent,canActivate: [AuthGuard] },
+  { path: 'family-info', component: FamilyInfoComponent,canActivate: [AuthGuard] },
+  { path: 'passport-info', component: PassportInfoComponent,canActivate: [AuthGuard] },
+  { path: 'language-info', component: LanguageInfoComponent,canActivate: [AuthGuard] },
+  { path: 'training-info', component: TrainingInfoComponent,canActivate: [AuthGuard] },
+  { path: 'achievement-info', component: AchievementInfoComponent,canActivate: [AuthGuard] },
+  { path: 'project-info', component: ProjectInfoComponent,canActivate: [AuthGuard] },
+  { path: 'employment-info', component: EmploymentInfoComponent ,canActivate: [AuthGuard]},
+  { path: 'referee-info', component: RefereeInfoComponent ,canActivate: [AuthGuard] },
+  { path: 'assessment-info', component: AssessmentInfoComponent,canActivate: [AuthGuard] },
+  { path: 'qualification-info', component: QualificationInfoComponent ,canActivate: [AuthGuard]},
+  { path: 'gap-info', component: GapInfoComponent,canActivate: [AuthGuard] },
+  { path: 'declaration-info', component: DeclarationInfoComponent ,canActivate: [AuthGuard] },
+  { path: 'review-submit', component: ReviewSubmitComponent,canActivate: [AuthGuard] },
 
 ];
 
