@@ -55,7 +55,14 @@ export class DeclarationInfoComponent implements OnInit {
           this.formService.clearFormData(); 
 
           this.router.navigate(['/review-submit']); 
-        } else {
+        } else 
+        if (res?.message === 'Form already submitted.') {
+          this.formService.setSubmitted(); 
+          this.formService.clearFormData(); 
+
+          this.router.navigate(['/review-submit']); 
+        } 
+        else {
           const msg = res?.message || 'Unexpected response from server.';
           this.errorMessage = msg;
           alert(this.errorMessage); 

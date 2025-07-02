@@ -42,6 +42,13 @@ export class PersonalInfoComponent implements OnInit {
   }
 
 ngOnInit(): void {
+   
+    // add by me
+    const saved = this.formService.getSectionData('personalForm');
+    if (saved) {
+      this.personalForm.patchValue(saved);
+    }
+    //
   this.route.queryParams.subscribe(params => {
     this.fromReview = params['from'] === 'review';
 
@@ -100,33 +107,33 @@ ngOnInit(): void {
     }
   }
 
-  saveToLocal(): void {
-    const existing = JSON.parse(localStorage.getItem('mnjFormData') || '{}');
-    const current = this.personalForm.value;
+  // saveToLocal(): void {
+  //   const existing = JSON.parse(localStorage.getItem('mnjFormData') || '{}');
+  //   const current = this.personalForm.value;
 
-    const flat = {
-      fullName: current.fullName,
-      fatherName: current.fatherName,
-      email: current.email,
-      phone: current.phone,
-      gender: current.gender,
-      maritalStatus: current.maritalStatus,
-      dob: current.dob,
-      panCard: current.panCard,
-      nationality: current.nationality,
-      placeOfBirth: current.placeOfBirth,
-      attendedInterviewIn6Months: current.attendedInterviewIn6Months,
-      hasVisa: current.hasVisa,
-      willingToTravel: current.willingToTravel,
+  //   const flat = {
+  //     fullName: current.fullName,
+  //     fatherName: current.fatherName,
+  //     email: current.email,
+  //     phone: current.phone,
+  //     gender: current.gender,
+  //     maritalStatus: current.maritalStatus,
+  //     dob: current.dob,
+  //     panCard: current.panCard,
+  //     nationality: current.nationality,
+  //     placeOfBirth: current.placeOfBirth,
+  //     attendedInterviewIn6Months: current.attendedInterviewIn6Months,
+  //     hasVisa: current.hasVisa,
+  //     willingToTravel: current.willingToTravel,
       
-    };
+  //   };
 
-    const updated = { ...existing, ...flat };
-    localStorage.setItem('mnjFormData', JSON.stringify(updated));
-  }
+  //   const updated = { ...existing, ...flat };
+  //   localStorage.setItem('mnjFormData', JSON.stringify(updated));
+  // }
 
   next(): void {
-    this.saveToLocal();
+    // this.saveToLocal();
         this.formService.savePartialData('personalForm', this.personalForm.value);
     this.formService.setFiles(this.photoFile, this.chartFile);
 

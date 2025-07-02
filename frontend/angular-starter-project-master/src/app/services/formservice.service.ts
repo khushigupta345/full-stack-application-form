@@ -116,7 +116,7 @@ getFormData(): any {
       Authorization: `Bearer ${token}`
     });
 
-    return this.http.post('http://localhost:8034/api/application/submit', fd, { headers,responseType: 'json'  });
+    return this.http.post('http://localhost:8034/api/application/submit', fd, {headers,responseType: 'json'  });
   }
 
   
@@ -124,27 +124,27 @@ getFormData(): any {
   //  Get My Form API
   getMyForm(): Observable<any> {
 
-    const token = this.auth.getToken();
-    const headers = new HttpHeaders({
-      Authorization:` Bearer ${token}`
-    });
+    // const token = this.auth.getToken();
+    // const headers = new HttpHeaders({
+    //   Authorization:` Bearer ${token}`
+    // });
     
 
-    return this.http.get('http://localhost:8034/api/application/my-form', { headers });
+    return this.http.get('http://localhost:8034/api/application/my-form' );
   }
 
 
  finalUpdatePersonalAndAddress(formData: FormData): Observable<any> {
   console.log("mahi",formData)
-    const token = this.auth.getToken();
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
+    // const token = this.auth.getToken();
+    // const headers = new HttpHeaders({
+    //   Authorization: `Bearer ${token}`
+    // });
 
     return this.http.put(
       'http://localhost:8034/api/application/update-personal-address',
       formData,
-      { headers }
+      // { headers }
     );
   }
 }

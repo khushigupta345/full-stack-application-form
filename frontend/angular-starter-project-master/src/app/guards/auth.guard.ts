@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
     const tokenExists = this.auth.isLoggedIn();
 
     if (tokenExists) {
+      console.log(tokenExists)
       return true; 
     } else {
       this.router.navigate(['/signup']); 

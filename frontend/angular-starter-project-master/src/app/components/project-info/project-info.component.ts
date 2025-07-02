@@ -26,7 +26,13 @@ export class ProjectInfoComponent {
     });
     
   }
-
+ngOnInit(): void {
+    // Load saved data if available
+    const saved = this.formService.getSectionData('projectForm');
+    if (saved) {
+      this.projectForm.patchValue(saved);
+    }
+  }
   get projects(): FormArray {
     return this.projectForm.get('projects') as FormArray;
   }
@@ -41,6 +47,7 @@ export class ProjectInfoComponent {
       role: ['', Validators.required],
     });
   }
+
 
   addProject() {
     if (this.projects.length < 3) {

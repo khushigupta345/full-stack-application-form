@@ -17,6 +17,13 @@ export class RefereeInfoComponent {
       referees: this.fb.array([this.createRefereeGroup()])
     });
   }
+  ngOnInit(): void {
+    // Load saved data if available
+    const saved = this.formService.getSectionData('refereeForm');
+    if (saved) {
+      this.refereeForm.patchValue(saved);
+    }
+  }
 
   get referees(): FormArray {
     return this.refereeForm.get('referees') as FormArray;

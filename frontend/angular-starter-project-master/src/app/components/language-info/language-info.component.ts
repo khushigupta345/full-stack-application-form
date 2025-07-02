@@ -20,6 +20,13 @@ export class LanguageInfoComponent {
   get languageProficiencies(): FormArray {
     return this.languageForm.get('languageProficiencies') as FormArray;
   }
+ngOnInit(): void {
+    // Load saved data if available
+    const saved = this.formService.getSectionData('languageForm');
+    if (saved) {
+      this.languageForm.patchValue(saved);
+    }
+  }
 
   // createLanguageGroup(): FormGroup {
   //   return this.fb.group({

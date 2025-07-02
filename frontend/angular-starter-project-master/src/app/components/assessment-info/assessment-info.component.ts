@@ -21,6 +21,13 @@ export class AssessmentInfoComponent {
       hobbie: ['', Validators.required],
     });
   }
+ ngOnInit(): void {
+    // Load saved data if available
+    const saved = this.formService.getSectionData('assessmentForm');
+    if (saved) {
+      this.assessmentForm.patchValue(saved);
+    }
+  }
 
   previous() {
     this.router.navigate(['/referee-info']);

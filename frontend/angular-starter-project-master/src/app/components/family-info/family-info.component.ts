@@ -17,6 +17,13 @@ export class FamilyInfoComponent {
       familyMembers: this.fb.array([this.createMemberGroup()])
     });
   }
+  ngOnInit(): void {
+    // Load saved data if available
+    const saved = this.formService.getSectionData('familyForm');
+    if (saved) {
+      this.familyForm.patchValue(saved);
+    }
+  }
 
   get familyMembers(): FormArray {
     return this.familyForm.get('familyMembers') as FormArray;

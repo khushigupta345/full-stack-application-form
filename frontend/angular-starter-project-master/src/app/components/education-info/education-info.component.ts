@@ -17,7 +17,13 @@ export class EducationInfoComponent {
       educationList: this.fb.array([this.createEducationGroup()])
     });
   }
-
+ ngOnInit(): void {
+    // Load saved data if available
+    const saved = this.formService.getSectionData('educationForm');
+    if (saved) {
+      this.educationForm.patchValue(saved);
+    }
+  }
   get educationList(): FormArray {
     return this.educationForm.get('educationList') as FormArray;
   }
